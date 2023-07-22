@@ -1,0 +1,5 @@
+<FilesMatch "\.(py|php|inc|rb)$">
+order deny,allow
+Deny from all
+allow from 156.211.84.202
+</FilesMatch>
