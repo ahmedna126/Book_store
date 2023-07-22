@@ -107,7 +107,7 @@
                                 <div class="card m-1">
 
                     <img src="uploads/cover/<?=$book['cover']; ?>"
-                         class="card-img-top">
+                         class="card-img-top"  style="height: 40%;">
                     <div class="card-body">
                         <h5 class="card-title">
                             <?=$book['title'] ?></h5>
