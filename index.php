@@ -2,29 +2,24 @@
         if(!isset($_SESSION)) { 
             session_start(); 
         } 
+        if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {               
                 include "php/functions.php";
                 include "db_conn.php";
                 $authors =getallauthor($conn);   
                 $books =getallbooks($conn);
                 $categories =getallcategory($conn); 
-
     ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Book Store</title>
-
     <!-- bootstrap 5 CDN-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
     <!-- bootstrap 5 Js bundle CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 	<div class="container">
@@ -50,7 +45,12 @@
 		          <a class="nav-link" 
 		             href="#">About</a>
 		        </li>
-		        
+		        <li class="nav-item">
+		          		          	<a class="nav-link" 
+		             href="admin.php">Admin</a>
+
+		        </li>
+
 		      </ul>
 		    </div>
 		  </div>
@@ -58,7 +58,6 @@
 		<form action="search.php"
              method="get" 
              style="width: 100%; max-width: 30rem">
-
        	<div class="input-group my-5">
 		  <input type="text" 
 		         class="form-control"
@@ -66,13 +65,11 @@
 		         placeholder="Search Book..." 
 		         aria-label="Search Book..." 
 		         aria-describedby="basic-addon2">
-
 		  <button class="input-group-text
 		                 btn btn-primary" 
 		          id="basic-addon2">
 		          <img src="img/search.png"
 		               width="20">
-
 		  </button>
 		</div>
        </form>
@@ -106,8 +103,6 @@
                             
                             <i><b>By: <?=$author_name;?> <br></b></i>
 							<?=$book['description']; ?>
-
-
                             <?php 
                         $Category_id = $book['category_id'];
                         if (checkidcategories($Category_id , $conn)){
@@ -124,28 +119,22 @@
                         ?>
                             
                             <br><i><b>Category: <?=$Category_name;?><br></b></i>
-
 						</p>
                        <a href="uploads/files/<?=$book['file']; ?>"
                           class="btn btn-success">Open</a>
-
                         <a href="uploads/files/<?=$book['file']; ?>"
                           class="btn btn-primary"
                           download="<?=$book['title']?>">Download</a>
 					</div>
 				</div>
-
                 <?php } ?>
-
          <?php } ?>
                         
 				</div>
-
                 <div class="category">
                 <div class="list-group">
                 <a href="#"
                    class="list-group-item list-group-item-action active">Category</a>
-
                 <?php
                 if ($categories !=0 ){
                     foreach ($categories as $category){  ?>
@@ -155,7 +144,6 @@
                       class="list-group-item list-group-item-action">
                       <?=$category['name']; ?></a>
                                 
-
 <?php
                     }
                 }else{ ?>
@@ -167,12 +155,10 @@
                 </div>
 		
 		
-
 			<!-- List of authors -->
 			<div class="list-group mt-5">
 								<a href="#"
 				   class="list-group-item list-group-item-action active">Author</a>
-
 				   <?php
                 if ($authors !=0 ){
                     foreach ($authors as $author){  ?>
@@ -181,7 +167,6 @@
                       class="list-group-item list-group-item-action">
                       <?=$author['name']; ?></a>
                                 
-
 <?php
                     }
                 }else{ ?>
@@ -197,3 +182,11 @@
 	</div>
 </body>
 </html>
+
+
+<?php
+ }else{
+  header("Location: login.php");
+  exit;
+  }
+?>
