@@ -2,7 +2,6 @@
         if(!isset($_SESSION)) { 
             session_start(); 
         } 
-        if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {               
                 include "php/functions.php";
                 include "db_conn.php";
                 $authors =getallauthor($conn);   
@@ -51,11 +50,7 @@
 		          <a class="nav-link" 
 		             href="#">About</a>
 		        </li>
-		        <li class="nav-item">
-		          		          	<a class="nav-link" 
-		             href="admin.php">Admin</a>
-		          
-		        </li>
+		        
 		      </ul>
 		    </div>
 		  </div>
@@ -202,11 +197,3 @@
 	</div>
 </body>
 </html>
-
-
-<?php
- }else{
-  header("Location: login.php");
-  exit;
-  }
-?>
