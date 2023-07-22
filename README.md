@@ -1,6 +1,6 @@
 # Book_store
 
-### Note: This project was developed in a preliminary stage before acquiring knowledge of object-oriented programming (OOP).
+Note: This project was developed in a preliminary stage before acquiring knowledge of object-oriented programming (OOP).
 
 
 
