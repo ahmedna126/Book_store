@@ -2,7 +2,7 @@
 
 > Note: This project was developed in a preliminary stage before acquiring knowledge of object-oriented programming (OOP).
 
-Website: [https://hissystem105.webhostapp.com/](https://ningago.000webhost.com/)
+Website: https://ningago.000webhostapp.com/
 
 ## Admin Account
 - Email: aaa@gmail.com
